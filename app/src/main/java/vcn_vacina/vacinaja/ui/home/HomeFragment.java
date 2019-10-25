@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vcn_vacina.vacinaja.R;
-import vcn_vacina.vacinaja.ui.mocks.Vaccine;
-import vcn_vacina.vacinaja.ui.mocks.mockedUser;
+import vcn_vacina.vacinaja.mocks.Vaccine;
+import vcn_vacina.vacinaja.User.mockedUser;
 
-import static vcn_vacina.vacinaja.ui.mocks.mockedVaccines.mockedVaccine;
+import static vcn_vacina.vacinaja.mocks.mockedVaccines.mockedVaccine;
 
 public class HomeFragment extends Fragment {
 

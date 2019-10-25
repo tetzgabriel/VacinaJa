@@ -1,4 +1,4 @@
-package vcn_vacina.vacinaja.ui.mocks;
+package vcn_vacina.vacinaja.mocks;
 
 public class Vaccine {
     String name;

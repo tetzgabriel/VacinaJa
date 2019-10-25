@@ -1,4 +1,4 @@
-package vcn_vacina.vacinaja.ui.mocks;
+package vcn_vacina.vacinaja.User;
 
 import vcn_vacina.vacinaja.R;
 
