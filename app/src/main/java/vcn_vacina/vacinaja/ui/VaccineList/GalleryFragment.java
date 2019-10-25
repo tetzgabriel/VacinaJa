@@ -1,4 +1,4 @@
-package vcn_vacina.vacinaja.ui.gallery;
+package vcn_vacina.vacinaja.ui.VaccineList;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

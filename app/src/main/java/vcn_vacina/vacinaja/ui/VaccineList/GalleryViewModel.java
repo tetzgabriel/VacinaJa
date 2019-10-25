@@ -1,4 +1,4 @@
-package vcn_vacina.vacinaja.ui.gallery;
+package vcn_vacina.vacinaja.ui.VaccineList;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
