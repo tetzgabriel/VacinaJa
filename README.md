@@ -13,6 +13,6 @@
 
 <h3> Tela inicial </h3>
 
-- [ ] Colocar nome, idade, Tipo sanguineo e Foto do usuario na tela
+- [X] Colocar nome, idade, Tipo sanguineo e Foto do usuario na tela
 - [ ] Colocar Vacinas recentemente tomadas pelo usuario
 - [ ] Criar e puxar eventos no calendario
