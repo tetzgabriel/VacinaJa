@@ -6,45 +6,59 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/UserImage"
-        android:layout_width="67dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars[0]" />
-
-    <TextView
-        android:id="@+id/UserName"
-        android:layout_width="175dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:text=""
-        app:layout_constraintStart_toEndOf="@+id/UserImage"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/UserBirth"
-        android:layout_width="66dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserImage" />
-
-    <TextView
-        android:id="@+id/UserBloodType"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text=""
-        app:layout_constraintStart_toEndOf="@+id/UserImage"
-        app:layout_constraintTop_toBottomOf="@+id/UserName" />
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/UserImage"
+            android:layout_width="67dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars[0]" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/UserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="4dp"
+                android:text=""
+                app:layout_constraintStart_toEndOf="@+id/UserImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/UserBirth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginLeft="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/UserImage" />
+
+            <TextView
+                android:id="@+id/UserBloodType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginLeft="4dp"
+                app:layout_constraintStart_toEndOf="@+id/UserImage"
+                app:layout_constraintTop_toBottomOf="@+id/UserName" />
+
+    </LinearLayout>
+
+
+
+    </LinearLayout>
 
     <CalendarView
         android:id="@+id/calendarView"
@@ -62,6 +76,8 @@
         android:layout_width="322dp"
         android:layout_height="27dp"
         android:text="Vacinas para tomar:"/>
+
+    <include layout="@layout/item_list" />
 
 
 </LinearLayout>
