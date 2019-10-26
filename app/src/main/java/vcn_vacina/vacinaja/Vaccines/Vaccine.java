@@ -1,20 +1,21 @@
-package vcn_vacina.vacinaja.mocks;
+package vcn_vacina.vacinaja.Vaccines;
 
 public class Vaccine {
     String name;
     String description;
-    int importance; //todo criar classe especifica
+    Importancia importance; //todo criar classe especifica
     int minimunAge;
     String preventedDisease;
-
+    float price;
     boolean status;
 
-    public Vaccine(String name, String description, int importance, int minimunAge, String preventedDisease, boolean status) {
+    public Vaccine(String name, String description, Importancia importance, int minimunAge, String preventedDisease, float price, boolean status) {
         this.name = name;
         this.description = description;
         this.importance = importance;
         this.minimunAge = minimunAge;
         this.preventedDisease = preventedDisease;
+        this.price = price;
         this.status = status;
     }
 
@@ -26,7 +27,7 @@ public class Vaccine {
         return description;
     }
 
-    public int getImportance() {
+    public Importancia getImportance() {
         return importance;
     }
 
@@ -45,5 +46,9 @@ public class Vaccine {
     @Override
     public String toString() {
         return name;
+    }
+
+    public float getPrice() {
+        return price;
     }
 }
