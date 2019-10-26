@@ -1,25 +1,28 @@
 package vcn_vacina.vacinaja.ui.home;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import vcn_vacina.vacinaja.R;
 import vcn_vacina.vacinaja.Vaccines.Vaccine;
+import vcn_vacina.vacinaja.mocks.MockedVaccines;
 import vcn_vacina.vacinaja.mocks.mockedUser;
-
-import static vcn_vacina.vacinaja.mocks.mockedVaccines.mockedVaccine;
 
 public class HomeFragment extends Fragment {
 
@@ -28,6 +31,8 @@ public class HomeFragment extends Fragment {
 
     View view;
 
+    @SuppressLint("SetTextI18n")
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
@@ -36,20 +41,20 @@ public class HomeFragment extends Fragment {
 
         ((ImageView)view.findViewById(R.id.UserImage)).setImageResource(mockedUser.usuarioMocado.getImage());
         ((TextView)view.findViewById(R.id.UserName)).setText(mockedUser.usuarioMocado.getNome());
-        ((TextView)view.findViewById(R.id.UserBirth)).setText(mockedUser.usuarioMocado.getIdade());
-        ((TextView)view.findViewById(R.id.UserBloodType)).setText(mockedUser.usuarioMocado.getBloodType());
+        ((TextView)view.findViewById(R.id.UserBirth)).setText(mockedUser.usuarioMocado.getIdade() + " Anos");
+        ((TextView)view.findViewById(R.id.UserBloodType)).setText("Tipo sanguineo" + mockedUser.usuarioMocado.getBloodType());
+        ((CompactCalendar) view.findViewById(R.id.calendarView)).Event()
 
         View recyclerView = view.findViewById(R.id.item_list);
-        assert recyclerView != null;
-//        setupRecyclerView((RecyclerView) recyclerView);
+        if (recyclerView != null)
+            setupRecyclerView((RecyclerView) recyclerView);
 
         return view;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        List<Vaccine> goodStatus = new ArrayList<>();
-
-        recyclerView.setAdapter(new vaccineRecyclerView(this, mockedVaccine, true));
+        recyclerView.setAdapter(new vaccineRecyclerView(MockedVaccines.getMockedVaccine().stream().filter(vac -> vac.getStatus()).collect(Collectors.toList())));
     }
 
 
@@ -57,23 +62,10 @@ public class HomeFragment extends Fragment {
     public static class vaccineRecyclerView
             extends RecyclerView.Adapter<vaccineRecyclerView.ViewHolder> {
 
-        private final HomeFragment mParentActivity;
         private final List<Vaccine> mValues;
-        private final boolean mTwoPane;
-        private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-                //todo onclick
-            }
-        };
-
-        vaccineRecyclerView(HomeFragment parent,
-                            List<Vaccine> items,
-                            boolean twoPane) {
+        vaccineRecyclerView(List<Vaccine> items) {
             mValues = items;
-            mParentActivity = parent;
-            mTwoPane = twoPane;
         }
 
         @Override
@@ -83,14 +75,14 @@ public class HomeFragment extends Fragment {
             return new ViewHolder(view);
         }
 
+        @SuppressLint("SetTextI18n")
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.name.setText(mValues.get(position).getName());
-            holder.minimumAge.setText(mValues.get(position).getMinimunAge());
-            holder.importance.setText(mValues.get(position).getImportance());
+            holder.minimumAge.setText("Idade minima: " + mValues.get(position).getMinimunAge());
+            holder.importance.setText("Importancia: " + mValues.get(position).getImportance());
 
             holder.itemView.setTag(mValues.get(position));
-            holder.itemView.setOnClickListener(mOnClickListener);
         }
 
         @Override
@@ -105,9 +97,9 @@ public class HomeFragment extends Fragment {
 
             ViewHolder(View view) {
                 super(view);
-                name = (TextView) view.findViewById(R.id.VaccineName);
-                minimumAge = (TextView) view.findViewById(R.id.VaccineAge);
-                importance = (TextView) view.findViewById(R.id.VaccineImportance);
+                name = view.findViewById(R.id.VaccineName);
+                minimumAge = view.findViewById(R.id.VaccineAge);
+                importance = view.findViewById(R.id.VaccineImportance);
             }
         }
 
