@@ -43,7 +43,7 @@ public class HomeFragment extends Fragment {
         ((TextView)view.findViewById(R.id.UserName)).setText(mockedUser.usuarioMocado.getNome());
         ((TextView)view.findViewById(R.id.UserBirth)).setText(mockedUser.usuarioMocado.getIdade() + " Anos");
         ((TextView)view.findViewById(R.id.UserBloodType)).setText("Tipo sanguineo" + mockedUser.usuarioMocado.getBloodType());
-        ((CompactCalendar) view.findViewById(R.id.calendarView)).Event()
+//        ((CompactCalendar ) view.findViewById(R.id.calendarView)).Event()
 
         View recyclerView = view.findViewById(R.id.item_list);
         if (recyclerView != null)
