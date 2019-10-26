@@ -3,6 +3,8 @@ package vcn_vacina.vacinaja.mocks;
 import java.util.ArrayList;
 import java.util.List;
 
+import vcn_vacina.vacinaja.Vaccines.Vaccine;
+
 public class mockedVaccines {
     public static List<Vaccine> mockedVaccine = new ArrayList<>();
 
