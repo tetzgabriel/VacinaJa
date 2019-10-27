@@ -23,14 +23,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Button;
 
 import vcn_vacina.vacinaja.ui.Appointment.AppointmentFragment;
+import vcn_vacina.vacinaja.ui.VaccineList.GalleryFragment;
 import vcn_vacina.vacinaja.ui.home.HomeFragment;
+import vcn_vacina.vacinaja.ui.tools.ToolsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private FragmentManager fragmentManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 .setDrawerLayout(drawer)
                 .build();
 
+
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -59,12 +64,15 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.add(R.id.nav_host_fragment, home, "home");
             fragmentTransaction.commit();
         }
+
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
         return true;
     }
 
@@ -92,5 +100,18 @@ public class MainActivity extends AppCompatActivity {
             apt = new HomeFragment();
         }
         replaceFragment(apt, "home");
+    }
+
+    public void showReceita(int position){
+
+        ToolsFragment toolsFragment = (ToolsFragment) fragmentManager.findFragmentByTag("tools");
+
+        if(toolsFragment == null){
+            toolsFragment = new ToolsFragment();
+        }
+
+        toolsFragment.setPosition(position);
+        replaceFragment(toolsFragment, "tools");
+
     }
 }

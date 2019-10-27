@@ -23,7 +23,7 @@
             tools:srcCompat="@tools:sample/avatars[0]" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="209dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -31,8 +31,8 @@
                 android:id="@+id/UserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
                 android:text=""
                 app:layout_constraintStart_toEndOf="@+id/UserImage"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -41,8 +41,8 @@
                 android:id="@+id/UserBirth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
                 android:layout_marginLeft="4dp"
+                android:text=""
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/UserImage" />
 
@@ -50,13 +50,19 @@
                 android:id="@+id/UserBloodType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
                 android:layout_marginLeft="4dp"
+                android:text=""
                 app:layout_constraintStart_toEndOf="@+id/UserImage"
                 app:layout_constraintTop_toBottomOf="@+id/UserName" />
 
-    </LinearLayout>
+        </LinearLayout>
 
+        <Button
+            android:id="@+id/buttonListVacinas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button" />
 
 
     </LinearLayout>
