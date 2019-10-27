@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import vcn_vacina.vacinaja.R;
 
-public class GalleryFragment extends Fragment {
+public class VaccineList extends Fragment {
 
     private GalleryViewModel galleryViewModel;
     View root;
