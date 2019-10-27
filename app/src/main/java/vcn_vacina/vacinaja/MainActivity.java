@@ -84,4 +84,13 @@ public class MainActivity extends AppCompatActivity {
         }
         replaceFragment(apt, "Appoint");
     }
+
+    public void makeHome(){
+        HomeFragment apt = (HomeFragment) fragmentManager.findFragmentByTag("home");
+
+        if (apt == null) {
+            apt = new HomeFragment();
+        }
+        replaceFragment(apt, "home");
+    }
 }

@@ -101,7 +101,7 @@
             tools:layout_editor_absoluteX="14dp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnCancel"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginBottom="24dp"

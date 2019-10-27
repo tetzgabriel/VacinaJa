@@ -15,10 +15,13 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
+import vcn_vacina.vacinaja.MainActivity;
 import vcn_vacina.vacinaja.R;
 import vcn_vacina.vacinaja.Vaccines.Vaccine;
 import vcn_vacina.vacinaja.mocks.MockedVaccines;
@@ -54,8 +57,22 @@ public class AppointmentFragment extends Fragment {
             setupRecyclerView((RecyclerView) recyclerView);
 
         root.findViewById(R.id.btnGO).setOnClickListener(v -> {
-            MockedVaccines.mockedVaccineTaken.addAll(auxliarVaccineList);
-            auxliarVaccineList.clear();
+
+            if (auxliarVaccineList.size()==0){
+                Snackbar.make(v, "Escolha uma Vacina", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }else{
+                MockedVaccines.mockedVaccineTaken.addAll(auxliarVaccineList);
+                auxliarVaccineList.clear();
+                value =0;
+                ((TextView) getView().findViewById(R.id.finalValue)).setText(String.valueOf(value));
+                ((MainActivity) Objects.requireNonNull(getActivity())).makeHome();
+            }
+
+        });
+
+        root.findViewById(R.id.btnCancel).setOnClickListener(v -> {
+            ((MainActivity) Objects.requireNonNull(getActivity())).makeHome();
         });
 
         return root;
