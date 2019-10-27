@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="vcn_vacina.vacinaja.ui.VaccineList.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/vaccineList"
+        android:name="vcn_vacina.vacinaja.ui.VaccineList.VaccineList"
+        android:label="@string/vaccine_list"
+        tools:layout="@layout/fragment_vaccine_list" />
 
     <fragment
         android:id="@+id/nav_slideshow"

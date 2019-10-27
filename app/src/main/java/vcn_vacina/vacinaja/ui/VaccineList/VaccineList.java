@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import vcn_vacina.vacinaja.R;
 
-public class GalleryFragment extends Fragment {
+public class VaccineList extends Fragment {
 
     private GalleryViewModel galleryViewModel;
     View root;
@@ -24,7 +24,7 @@ public class GalleryFragment extends Fragment {
         galleryViewModel =
                 ViewModelProviders.of(this).get(GalleryViewModel.class);
         if(root == null)
-            root = inflater.inflate(R.layout.fragment_gallery, container, false);
+            root = inflater.inflate(R.layout.fragment_vaccine_list, container, false);
         final TextView textView = root.findViewById(R.id.text_gallery);
         galleryViewModel.getText().observe(this, new Observer<String>() {
             @Override

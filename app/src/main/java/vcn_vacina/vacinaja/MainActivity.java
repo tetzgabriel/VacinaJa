@@ -1,12 +1,17 @@
 package vcn_vacina.vacinaja;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -25,9 +30,11 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 
 import vcn_vacina.vacinaja.ui.Appointment.AppointmentFragment;
+import vcn_vacina.vacinaja.ui.VaccineList.VaccineList;
 import vcn_vacina.vacinaja.ui.home.HomeFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     private FragmentManager fragmentManager;
@@ -39,17 +46,20 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
-                .setDrawerLayout(drawer)
-                .build();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
 
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -92,5 +102,42 @@ public class MainActivity extends AppCompatActivity {
             apt = new HomeFragment();
         }
         replaceFragment(apt, "home");
+    }
+    public void makeVacList(){
+        VaccineList apt = (VaccineList) fragmentManager.findFragmentByTag("vac");
+
+        if (apt == null) {
+            apt = new VaccineList();
+        }
+        replaceFragment(apt, "vac");
+    }
+    public void makeConsult(){
+        VaccineList apt = (VaccineList) fragmentManager.findFragmentByTag("vac");
+
+        if (apt == null) {
+            apt = new VaccineList();
+        }
+        replaceFragment(apt, "vac");
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        Context contexto = getApplicationContext();
+        int id = menuItem.getItemId();
+        Fragment fragment;
+        if(id == R.id.vaccineList){
+            fragment = fragmentManager.findFragmentByTag("vac");
+            if(fragment == null)
+                fragment = new VaccineList();
+            replaceFragment(fragment, "vac");
+        }
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }
