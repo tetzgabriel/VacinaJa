@@ -54,7 +54,7 @@ public class AdapterVacinas  extends RecyclerView.Adapter{
 
     @Override
     public int getItemCount() {
-        return 0;
+        return vaccines.size();
     }
 
     public class NewHolder extends RecyclerView.ViewHolder {
