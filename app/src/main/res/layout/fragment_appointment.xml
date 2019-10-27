@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_slideshow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Consulta"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Spinner
+            android:id="@+id/spinner4"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="44dp"
+            android:entries="@array/rest_requests"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_slideshow"
+            tools:ignore="MissingConstraints" />
+
+        <com.github.sundeepk.compactcalendarview.CompactCalendarView
+            android:id="@+id/CompraCalendarView"
+            android:layout_width="match_parent"
+            android:layout_height="211dp"
+            app:compactCalendarBackgroundColor="#66C3C6F1"
+            app:compactCalendarCurrentDayBackgroundColor="#D56AD36C"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="#7390E5"
+            app:compactCalendarMultiEventIndicatorColor="#fff"
+            app:compactCalendarTargetHeight="250dp"
+            app:compactCalendarTextColor="#000000"
+            app:compactCalendarTextSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/finalValue"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
+            app:layout_constraintBottom_toTopOf="@+id/buyable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <include
+            android:id="@+id/buyable"
+            layout="@layout/item_list"
+            android:layout_width="match_parent"
+            android:layout_height="211dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="116dp"
+            app:layout_constraintBottom_toTopOf="@+id/finalValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/CompraCalendarView" />
+
+        <TextView
+            android:id="@+id/finalValue"
+            android:layout_width="match_parent"
+            android:layout_height="27dp"
+            android:layout_marginBottom="64dp"
+            android:text="R$ 0.00"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="24sp"
+            tools:layout_editor_absoluteX="14dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"
+            android:text="Marcar consulta"
+            app:layout_constraintBottom_toTopOf="@+id/btnGO"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="14dp" />
+
+        <Button
+            android:id="@+id/btnGO"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginBottom="24dp"
+            android:text="Cancelar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="16dp" />
+
+    </LinearLayout>
+
+</ScrollView>

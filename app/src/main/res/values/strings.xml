@@ -13,4 +13,11 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+        <string-array name="rest_requests">
+        <item>Americana</item>
+        <item>Santa Barbara</item>
+        <item>Campinas</item>
+        </string-array>
+
 </resources>
