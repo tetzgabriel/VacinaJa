@@ -21,7 +21,7 @@ import vcn_vacina.vacinaja.MainActivity;
 import vcn_vacina.vacinaja.R;
 import vcn_vacina.vacinaja.mocks.MockedVaccines;
 
-public class GalleryFragment extends Fragment {
+public class VaccineList extends Fragment {
 
     private GalleryViewModel galleryViewModel;
     View root;
@@ -44,7 +44,7 @@ public class GalleryFragment extends Fragment {
         });
 
 
-        mRecyclerView = view.findViewById(R.id.recycle_vacinas);
+        mRecyclerView = root.findViewById(R.id.recycleVacinas);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager( new LinearLayoutManager(getActivity()));
 

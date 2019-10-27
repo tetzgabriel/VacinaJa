@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycle_vacinas"
+        android:id="@+id/recycleVacinas"
         android:layout_width="414dp"
         android:layout_height="627dp"
         android:layout_marginTop="32dp"
