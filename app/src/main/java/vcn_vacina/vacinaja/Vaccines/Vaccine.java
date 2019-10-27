@@ -7,16 +7,14 @@ public class Vaccine {
     int minimunAge;
     String preventedDisease;
     float price;
-    boolean status;
 
-    public Vaccine(String name, String description, Importancia importance, int minimunAge, String preventedDisease, float price, boolean status) {
+    public Vaccine(String name, String description, Importancia importance, int minimunAge, String preventedDisease, float price) {
         this.name = name;
         this.description = description;
         this.importance = importance;
         this.minimunAge = minimunAge;
         this.preventedDisease = preventedDisease;
         this.price = price;
-        this.status = status;
     }
 
     public String getName() {
@@ -37,10 +35,6 @@ public class Vaccine {
 
     public String getPreventedDisease() {
         return preventedDisease;
-    }
-
-    public boolean getStatus() {
-        return status;
     }
 
     @Override
