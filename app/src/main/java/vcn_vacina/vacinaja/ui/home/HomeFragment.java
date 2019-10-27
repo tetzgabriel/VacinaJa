@@ -1,6 +1,7 @@
 package vcn_vacina.vacinaja.ui.home;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.domain.Event;
 
 import java.util.Date;
 import java.util.Objects;
@@ -29,23 +31,26 @@ import vcn_vacina.vacinaja.vaccineRecyclerView;
 public class HomeFragment extends Fragment {
 
     View view;
+    CompactCalendarView calendar;
 
     @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.N)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-                ViewModelProviders.of(this).get(HomeViewModel.class);
+        ViewModelProviders.of(this).get(HomeViewModel.class);
         if (view == null)
             view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        ((ImageView)view.findViewById(R.id.UserImage)).setImageResource(mockedUser.usuarioMocado.getImage());
-        ((TextView)view.findViewById(R.id.UserName)).setText(mockedUser.usuarioMocado.getNome());
-        ((TextView)view.findViewById(R.id.UserBirth)).setText(mockedUser.usuarioMocado.getIdade() + " Anos");
-        ((TextView)view.findViewById(R.id.UserBloodType)).setText("Tipo sanguineo" + mockedUser.usuarioMocado.getBloodType());
-        ((CompactCalendarView) view.findViewById(R.id.calendarView)).setListener(new CompactCalendarView.CompactCalendarViewListener() {
+        ((ImageView) view.findViewById(R.id.UserImage)).setImageResource(mockedUser.usuarioMocado.getImage());
+        ((TextView) view.findViewById(R.id.UserName)).setText(mockedUser.usuarioMocado.getNome());
+        ((TextView) view.findViewById(R.id.UserBirth)).setText(mockedUser.usuarioMocado.getIdade() + " Anos");
+        ((TextView) view.findViewById(R.id.UserBloodType)).setText("Tipo sanguineo" + mockedUser.usuarioMocado.getBloodType());
+        calendar = view.findViewById(R.id.calendarView);
+        HomeFragment rh = this;
+        calendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
-                ((MainActivity) Objects.requireNonNull(getActivity())).makeAppointment(dateClicked.getTime());
+                ((MainActivity) Objects.requireNonNull(getActivity())).makeAppointment(dateClicked.getTime(), rh);
             }
 
             @Override
@@ -67,8 +72,9 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(new vaccineRecyclerView(MockedVaccines.mockedVaccineTaken, R.layout.vaccine_list_content, this));
     }
 
-
-
+    public void createEvent(Long eventDay, String description) {
+        calendar.addEvent(new Event(Color.YELLOW, eventDay, description));
+    }
 
 
 }

@@ -75,12 +75,12 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void makeAppointment(Long date) {
+    public void makeAppointment(Long date, HomeFragment frag) {
 
         AppointmentFragment apt = (AppointmentFragment) fragmentManager.findFragmentByTag("Appoint");
 
         if (apt == null) {
-            apt = new AppointmentFragment(date);
+            apt = new AppointmentFragment(date, frag);
         }
         replaceFragment(apt, "Appoint");
     }
