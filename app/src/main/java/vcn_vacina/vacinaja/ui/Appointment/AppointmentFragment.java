@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,13 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
+import vcn_vacina.vacinaja.MainActivity;
 import vcn_vacina.vacinaja.R;
 import vcn_vacina.vacinaja.Vaccines.Vaccine;
 import vcn_vacina.vacinaja.mocks.MockedVaccines;
+import vcn_vacina.vacinaja.ui.home.HomeFragment;
 import vcn_vacina.vacinaja.vaccineRecyclerView;
 
 public class AppointmentFragment extends Fragment {
@@ -30,11 +33,13 @@ public class AppointmentFragment extends Fragment {
     View root;
     Long dataFInal;
     float value;
-    ArrayList<Vaccine> auxliarVaccineList;
+    static ArrayList<Vaccine> auxliarVaccineList;
+    HomeFragment fragment;
 
-    public AppointmentFragment(Long data) {
+    public AppointmentFragment(Long data, HomeFragment fragment) {
         dataFInal = data;
         auxliarVaccineList = new ArrayList<>();
+        this.fragment = fragment;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -54,8 +59,22 @@ public class AppointmentFragment extends Fragment {
             setupRecyclerView((RecyclerView) recyclerView);
 
         root.findViewById(R.id.btnGO).setOnClickListener(v -> {
-            MockedVaccines.mockedVaccineTaken.addAll(auxliarVaccineList);
-            auxliarVaccineList.clear();
+            if (auxliarVaccineList.isEmpty()) {
+                Snackbar.make(v, "Escolha uma Vacina", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            } else {
+                MockedVaccines.mockedVaccineTaken.addAll(auxliarVaccineList);
+                fragment.createEvent(dataFInal, auxliarVaccineList.stream().map(Vaccine::getName).reduce((v1, v2) -> v1 + " " + v2).orElse(""));
+                auxliarVaccineList.clear();
+                value = 0;
+                ((TextView) getView().findViewById(R.id.finalValue)).setText(String.valueOf(value));
+                ((MainActivity) Objects.requireNonNull(getActivity())).makeHome();
+            }
+
+        });
+
+        root.findViewById(R.id.btnCancel).setOnClickListener(v -> {
+            ((MainActivity) Objects.requireNonNull(getActivity())).makeHome();
         });
 
         return root;
