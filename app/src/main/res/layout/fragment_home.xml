@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:id="@+id/home"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -60,16 +61,24 @@
 
     </LinearLayout>
 
-    <CalendarView
+
+    <com.github.sundeepk.compactcalendarview.CompactCalendarView
         android:id="@+id/calendarView"
         android:layout_width="327dp"
         android:layout_height="309dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
+        app:compactCalendarBackgroundColor="#66C3C6F1"
+        app:compactCalendarCurrentDayBackgroundColor="#D56AD36C"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="#7390E5"
+        app:compactCalendarMultiEventIndicatorColor="#fff"
+        app:compactCalendarTargetHeight="250dp"
+        app:compactCalendarTextColor="#000000"
+        app:compactCalendarTextSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/UserBirth"
-        tools:layout_editor_absoluteX="42dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteX="42dp" />
 
     <TextView
         android:id="@+id/textView5"
