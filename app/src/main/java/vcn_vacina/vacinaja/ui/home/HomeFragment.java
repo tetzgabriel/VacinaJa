@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -25,6 +26,7 @@ import java.util.Objects;
 import vcn_vacina.vacinaja.MainActivity;
 import vcn_vacina.vacinaja.R;
 import vcn_vacina.vacinaja.mocks.MockedVaccines;
+import vcn_vacina.vacinaja.mocks.Month;
 import vcn_vacina.vacinaja.mocks.mockedUser;
 import vcn_vacina.vacinaja.vaccineRecyclerView;
 
@@ -33,11 +35,10 @@ public class HomeFragment extends Fragment {
     View view;
     CompactCalendarView calendar;
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "NewApi"})
     @RequiresApi(api = Build.VERSION_CODES.N)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ViewModelProviders.of(this).get(HomeViewModel.class);
         if (view == null)
             view = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -46,16 +47,21 @@ public class HomeFragment extends Fragment {
         ((TextView) view.findViewById(R.id.UserBirth)).setText(mockedUser.usuarioMocado.getIdade() + " Anos");
         ((TextView) view.findViewById(R.id.UserBloodType)).setText("Tipo sanguineo" + mockedUser.usuarioMocado.getBloodType());
         calendar = view.findViewById(R.id.calendarView);
+        TextView month = view.findViewById(R.id.month);
+        month.setText(Month.month.get(calendar.getFirstDayOfCurrentMonth().getMonth()));
         HomeFragment rh = this;
         calendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
-                ((MainActivity) Objects.requireNonNull(getActivity())).makeAppointment(dateClicked.getTime(), rh);
+                if (calendar.getEvents(dateClicked).isEmpty())
+                    ((MainActivity) Objects.requireNonNull(getActivity())).makeAppointment(dateClicked.getTime(), rh);
+                else
+                    Toast.makeText(getContext(), calendar.getEvents(dateClicked).stream().map(Event::getData).reduce((v1, v2) -> v1 + "\n" + v2).orElse("").toString(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-
+                month.setText(Month.month.get(calendar.getFirstDayOfCurrentMonth().getMonth()));
             }
         });
 

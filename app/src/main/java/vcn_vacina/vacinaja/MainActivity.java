@@ -87,11 +87,7 @@ public class MainActivity extends AppCompatActivity
 
     public void makeAppointment(Long date, HomeFragment frag) {
 
-        AppointmentFragment apt = (AppointmentFragment) fragmentManager.findFragmentByTag("Appoint");
-
-        if (apt == null) {
-            apt = new AppointmentFragment(date, frag);
-        }
+        AppointmentFragment apt  = new AppointmentFragment(date, frag);
         replaceFragment(apt, "Appoint");
     }
 
