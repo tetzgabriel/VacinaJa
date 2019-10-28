@@ -75,6 +75,11 @@ public class MainActivity extends AppCompatActivity
         AppointmentFragment apt = new AppointmentFragment(date, frag);
         replaceFragment(apt, "Appoint");
     }
+    public void makeAppointment(HomeFragment frag) {
+
+        AppointmentFragment apt = new AppointmentFragment(frag);
+        replaceFragment(apt, "Appoint");
+    }
 
     public void makeHome() {
         HomeFragment apt = (HomeFragment) fragmentManager.findFragmentByTag("home");
@@ -94,31 +99,17 @@ public class MainActivity extends AppCompatActivity
         replaceFragment(apt, "vac");
     }
 
-    public void makeConsult() {
-        VaccineList apt = (VaccineList) fragmentManager.findFragmentByTag("vac");
-
-        if (apt == null) {
-            apt = new VaccineList();
-        }
-        replaceFragment(apt, "vac");
-    }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        Context contexto = getApplicationContext();
         int id = menuItem.getItemId();
-        Fragment fragment;
         if (id == R.id.nav_home) {
-            fragment = fragmentManager.findFragmentByTag("vac");
-            if (fragment == null)
-                fragment = new VaccineList();
-            replaceFragment(fragment, "vac");
+            makeHome();
         }
-        if (id == R.id.nav_home) {
-            fragment = fragmentManager.findFragmentByTag("vac");
-            if (fragment == null)
-                fragment = new VaccineList();
-            replaceFragment(fragment, "vac");
+        if (id == R.id.vaccineList) {
+            makeVacList();
+        }
+        if (id == R.id.appointment) {
+            makeAppointment((HomeFragment) fragmentManager.findFragmentByTag("home"));
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -132,7 +123,7 @@ public class MainActivity extends AppCompatActivity
 
     public void showReceita(int position) {
 
-        ToolsFragment toolsFragment = (ToolsFragment) fragmentManager.findFragmentByTag("tools");
+        ToolsFragment toolsFragment;
             toolsFragment = new ToolsFragment();
 
         toolsFragment.setPosition(position);

@@ -20,4 +20,25 @@
         <item>Campinas</item>
         </string-array>
 
+
+    <string-array name="filter_year">
+        <item>idade minima maior</item>
+        <item>idade minima menor</item>
+        <item>Campinas</item>
+    </string-array>
+
+    <string-array name="filter_status">
+        <item>todas</item>
+        <item>Ja tomadas</item>
+        <item>para tomar</item>
+    </string-array>
+
+    <string-array name="filter_importance">
+        <item>importancia mais alta</item>
+        <item>importancia mais baixa</item>
+        <item>para tomar</item>
+    </string-array>
+
+
+
 </resources>

@@ -18,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import vcn_vacina.vacinaja.MainActivity;
@@ -40,6 +41,11 @@ public class AppointmentFragment extends Fragment {
         auxliarVaccineList = new ArrayList<>();
         this.fragment = fragment;
     }
+    public AppointmentFragment( HomeFragment fragment) {
+        dataFInal = null;
+        auxliarVaccineList = new ArrayList<>();
+        this.fragment = fragment;
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -48,7 +54,8 @@ public class AppointmentFragment extends Fragment {
             root = inflater.inflate(R.layout.fragment_appointment, container, false);
 
         CompactCalendarView comp = root.findViewById(R.id.CompraCalendarView);
-        comp.setCurrentDate(new Date(dataFInal));
+        if(dataFInal != null)
+            comp.setCurrentDate(new Date(dataFInal));
 
         View recyclerView = root.findViewById(R.id.buyable);
         value = 0;
@@ -88,6 +95,14 @@ public class AppointmentFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new vaccineRecyclerView(MockedVaccines.getMockedVaccine(), R.layout.to_buy_vaccine, this));
+
+        List<Vaccine> aux = new ArrayList<>();
+        MockedVaccines.mockedVaccine.stream().forEach(vaccine -> {
+            if(!MockedVaccines.mockedVaccineTaken.contains(vaccine)){
+                aux.add(vaccine);
+            }
+        });
+
+        recyclerView.setAdapter(new vaccineRecyclerView(aux, R.layout.to_buy_vaccine, this));
     }
 }
