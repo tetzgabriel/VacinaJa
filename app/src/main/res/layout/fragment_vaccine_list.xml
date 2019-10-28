@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:ignore="ExtraText">
 
     <TextView
         android:id="@+id/text_gallery"
@@ -46,7 +47,6 @@
         app:layout_constraintStart_toEndOf="@+id/spinner"
         tools:layout_editor_absoluteY="45dp"
         tools:ignore="MissingConstraints" />
-        app:layout_constraintTop_toBottomOf="@+id/text_gallery" />
 
     <Spinner
         android:id="@+id/spinner3"
