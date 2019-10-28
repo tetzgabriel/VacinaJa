@@ -90,25 +90,14 @@
             android:textSize="24sp"
             tools:layout_editor_absoluteX="14dp" />
 
-        <Button
-            android:id="@+id/btnGO"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGoMaterial"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginBottom="16dp"
-            android:text="Marcar consulta"
-            app:layout_constraintBottom_toTopOf="@+id/btnGO"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="14dp" />
-
-        <Button
-            android:id="@+id/btnCancel"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginBottom="24dp"
-            android:text="Cancelar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="16dp" />
+            android:layout_marginBottom="8dp"
+            android:text="Marcar consulta"/>
 
     </LinearLayout>
 

@@ -41,7 +41,8 @@ public class AppointmentFragment extends Fragment {
         auxliarVaccineList = new ArrayList<>();
         this.fragment = fragment;
     }
-    public AppointmentFragment( HomeFragment fragment) {
+
+    public AppointmentFragment(HomeFragment fragment) {
         dataFInal = null;
         auxliarVaccineList = new ArrayList<>();
         this.fragment = fragment;
@@ -54,7 +55,7 @@ public class AppointmentFragment extends Fragment {
             root = inflater.inflate(R.layout.fragment_appointment, container, false);
 
         CompactCalendarView comp = root.findViewById(R.id.CompraCalendarView);
-        if(dataFInal != null)
+        if (dataFInal != null)
             comp.setCurrentDate(new Date(dataFInal));
 
         View recyclerView = root.findViewById(R.id.buyable);
@@ -62,7 +63,7 @@ public class AppointmentFragment extends Fragment {
         if (recyclerView != null)
             setupRecyclerView((RecyclerView) recyclerView);
 
-        root.findViewById(R.id.btnGO).setOnClickListener(v -> {
+        root.findViewById(R.id.btnGoMaterial).setOnClickListener(v -> {
             if (auxliarVaccineList.isEmpty()) {
                 Snackbar.make(v, "Escolha uma Vacina", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
@@ -71,14 +72,10 @@ public class AppointmentFragment extends Fragment {
                 fragment.createEvent(dataFInal, auxliarVaccineList.stream().map(Vaccine::getName).reduce((v1, v2) -> v1 + "\n" + v2).orElse(""));
                 auxliarVaccineList.clear();
                 value = 0;
-                ((TextView) getView().findViewById(R.id.finalValue)).setText(String.valueOf(value));
+                ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.finalValue)).setText(String.valueOf(value));
                 ((MainActivity) Objects.requireNonNull(getActivity())).makeHome();
             }
 
-        });
-
-        root.findViewById(R.id.btnCancel).setOnClickListener(v -> {
-            ((MainActivity) Objects.requireNonNull(getActivity())).makeHome();
         });
 
         return root;
@@ -86,7 +83,7 @@ public class AppointmentFragment extends Fragment {
 
     public void setValue(float plus, Vaccine vaccine) {
         value += plus;
-        ((TextView) getView().findViewById(R.id.finalValue)).setText(String.valueOf(value));
+        ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.finalValue)).setText(String.valueOf(value));
         if (plus > 0)
             auxliarVaccineList.add(vaccine);
         else
@@ -97,8 +94,8 @@ public class AppointmentFragment extends Fragment {
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
 
         List<Vaccine> aux = new ArrayList<>();
-        MockedVaccines.mockedVaccine.stream().forEach(vaccine -> {
-            if(!MockedVaccines.mockedVaccineTaken.contains(vaccine)){
+        MockedVaccines.mockedVaccine.forEach(vaccine -> {
+            if (!MockedVaccines.mockedVaccineTaken.contains(vaccine)) {
                 aux.add(vaccine);
             }
         });
