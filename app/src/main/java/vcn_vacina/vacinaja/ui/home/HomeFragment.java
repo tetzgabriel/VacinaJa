@@ -27,6 +27,7 @@ import java.util.Objects;
 import vcn_vacina.vacinaja.MainActivity;
 import vcn_vacina.vacinaja.R;
 import vcn_vacina.vacinaja.mocks.MockedVaccines;
+import vcn_vacina.vacinaja.mocks.Month;
 import vcn_vacina.vacinaja.mocks.mockedUser;
 import vcn_vacina.vacinaja.vaccineRecyclerView;
 
@@ -48,6 +49,7 @@ public class HomeFragment extends Fragment {
         ((TextView) view.findViewById(R.id.UserBirth)).setText(mockedUser.usuarioMocado.getIdade() + " Anos");
         ((TextView) view.findViewById(R.id.UserBloodType)).setText("Tipo sanguineo" + mockedUser.usuarioMocado.getBloodType());
         calendar = view.findViewById(R.id.calendarView);
+        ((TextView) view.findViewById(R.id.month)).setText(Month.month.get(calendar.getFirstDayOfCurrentMonth().getMonth()));
         HomeFragment rh = this;
         calendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
@@ -60,7 +62,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-
+                ((TextView) view.findViewById(R.id.month)).setText(Month.month.get(firstDayOfNewMonth.getMonth()));
             }
         });
 

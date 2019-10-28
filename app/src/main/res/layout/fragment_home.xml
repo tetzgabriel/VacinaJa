@@ -61,13 +61,20 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
 
     <com.github.sundeepk.compactcalendarview.CompactCalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="309dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         app:compactCalendarBackgroundColor="#66C3C6F1"
         app:compactCalendarCurrentDayBackgroundColor="#D56AD36C"
         app:compactCalendarCurrentSelectedDayBackgroundColor="#7390E5"
@@ -83,7 +90,9 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="27dp"
-        android:text="Vacinas para tomar:"/>
+        android:text="Vacinas para tomar:"
+        android:textAlignment="center"
+        android:textSize="18sp" />
 
     <include layout="@layout/item_list" />
 
