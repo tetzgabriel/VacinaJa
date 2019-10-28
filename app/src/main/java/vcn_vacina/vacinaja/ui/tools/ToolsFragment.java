@@ -17,6 +17,7 @@ import vcn_vacina.vacinaja.R;
 public class ToolsFragment extends Fragment {
 
     private ToolsViewModel toolsViewModel;
+    private int position;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -31,5 +32,8 @@ public class ToolsFragment extends Fragment {
             }
         });
         return root;
+    }
+    public void setPosition(int position) {
+        this.position = position;
     }
 }

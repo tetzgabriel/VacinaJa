@@ -1,5 +1,4 @@
 package vcn_vacina.vacinaja;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,6 +23,7 @@ import com.google.android.material.snackbar.Snackbar;
 import vcn_vacina.vacinaja.ui.Appointment.AppointmentFragment;
 import vcn_vacina.vacinaja.ui.VaccineList.VaccineList;
 import vcn_vacina.vacinaja.ui.home.HomeFragment;
+import vcn_vacina.vacinaja.ui.tools.ToolsFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -131,5 +131,17 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    public void showReceita(int position) {
+
+        ToolsFragment toolsFragment = (ToolsFragment) fragmentManager.findFragmentByTag("tools");
+
+        if (toolsFragment == null) {
+            toolsFragment = new ToolsFragment();
+        }
+
+        toolsFragment.setPosition(position);
+        replaceFragment(toolsFragment, "tools");
     }
 }
