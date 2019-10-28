@@ -2,36 +2,29 @@ package vcn_vacina.vacinaja;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.Menu;
+import com.google.android.material.snackbar.Snackbar;
 
 import vcn_vacina.vacinaja.ui.Appointment.AppointmentFragment;
 import vcn_vacina.vacinaja.ui.VaccineList.VaccineList;
 import vcn_vacina.vacinaja.ui.home.HomeFragment;
+import vcn_vacina.vacinaja.ui.tools.ToolsFragment;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -46,13 +39,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show());
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -87,15 +75,11 @@ public class MainActivity extends AppCompatActivity
 
     public void makeAppointment(Long date, HomeFragment frag) {
 
-        AppointmentFragment apt = (AppointmentFragment) fragmentManager.findFragmentByTag("Appoint");
-
-        if (apt == null) {
-            apt = new AppointmentFragment(date, frag);
-        }
+        AppointmentFragment apt = new AppointmentFragment(date, frag);
         replaceFragment(apt, "Appoint");
     }
 
-    public void makeHome(){
+    public void makeHome() {
         HomeFragment apt = (HomeFragment) fragmentManager.findFragmentByTag("home");
 
         if (apt == null) {
@@ -103,7 +87,8 @@ public class MainActivity extends AppCompatActivity
         }
         replaceFragment(apt, "home");
     }
-    public void makeVacList(){
+
+    public void makeVacList() {
         VaccineList apt = (VaccineList) fragmentManager.findFragmentByTag("vac");
 
         if (apt == null) {
@@ -111,7 +96,8 @@ public class MainActivity extends AppCompatActivity
         }
         replaceFragment(apt, "vac");
     }
-    public void makeConsult(){
+
+    public void makeConsult() {
         VaccineList apt = (VaccineList) fragmentManager.findFragmentByTag("vac");
 
         if (apt == null) {
@@ -125,9 +111,9 @@ public class MainActivity extends AppCompatActivity
         Context contexto = getApplicationContext();
         int id = menuItem.getItemId();
         Fragment fragment;
-        if(id == R.id.vaccineList){
+        if (id == R.id.nav_home) {
             fragment = fragmentManager.findFragmentByTag("vac");
-            if(fragment == null)
+            if (fragment == null)
                 fragment = new VaccineList();
             replaceFragment(fragment, "vac");
         }
@@ -139,5 +125,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    public void showReceita(int position) {
+
+        ToolsFragment toolsFragment = (ToolsFragment) fragmentManager.findFragmentByTag("tools");
+            toolsFragment = new ToolsFragment();
+
+        toolsFragment.setPosition(position);
+        replaceFragment(toolsFragment, "tools");
     }
 }

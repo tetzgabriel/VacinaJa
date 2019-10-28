@@ -29,7 +29,6 @@ import vcn_vacina.vacinaja.vaccineRecyclerView;
 
 public class AppointmentFragment extends Fragment {
 
-    private AppointmentViewModel appointmentViewModel;
     View root;
     Long dataFInal;
     float value;
@@ -45,8 +44,6 @@ public class AppointmentFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        appointmentViewModel =
-                ViewModelProviders.of(this).get(AppointmentViewModel.class);
         if (root == null)
             root = inflater.inflate(R.layout.fragment_appointment, container, false);
 
@@ -64,7 +61,7 @@ public class AppointmentFragment extends Fragment {
                         .setAction("Action", null).show();
             } else {
                 MockedVaccines.mockedVaccineTaken.addAll(auxliarVaccineList);
-                fragment.createEvent(dataFInal, auxliarVaccineList.stream().map(Vaccine::getName).reduce((v1, v2) -> v1 + " " + v2).orElse(""));
+                fragment.createEvent(dataFInal, auxliarVaccineList.stream().map(Vaccine::getName).reduce((v1, v2) -> v1 + "\n" + v2).orElse(""));
                 auxliarVaccineList.clear();
                 value = 0;
                 ((TextView) getView().findViewById(R.id.finalValue)).setText(String.valueOf(value));

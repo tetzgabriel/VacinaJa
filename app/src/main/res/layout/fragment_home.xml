@@ -55,19 +55,41 @@
                 app:layout_constraintStart_toEndOf="@+id/UserImage"
                 app:layout_constraintTop_toBottomOf="@+id/UserName" />
 
+        </LinearLayout>
+
+
+
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
 
+        <Button
+            android:id="@+id/btn_Vac_disp"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="Vacinas"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_consut_hist"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="Consultas"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
 
     <com.github.sundeepk.compactcalendarview.CompactCalendarView
         android:id="@+id/calendarView"
-        android:layout_width="327dp"
+        android:layout_width="match_parent"
         android:layout_height="309dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
         app:compactCalendarBackgroundColor="#66C3C6F1"
         app:compactCalendarCurrentDayBackgroundColor="#D56AD36C"
@@ -82,7 +104,7 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="322dp"
+        android:layout_width="match_parent"
         android:layout_height="27dp"
         android:text="Vacinas para tomar:"/>
 
