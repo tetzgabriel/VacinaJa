@@ -61,29 +61,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        >
-
-        <Button
-            android:id="@+id/btn_Vac_disp"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:text="Vacinas"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/btn_consut_hist"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:text="Consultas"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
 
     <com.github.sundeepk.compactcalendarview.CompactCalendarView
         android:id="@+id/calendarView"

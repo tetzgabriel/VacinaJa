@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_home"
+    tools:ignore="UnusedNavigation">
 
     <fragment
         android:id="@+id/nav_home"
@@ -18,26 +19,14 @@
         tools:layout="@layout/fragment_vaccine_list" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/appointment"
         android:name="vcn_vacina.vacinaja.ui.Appointment.AppointmentFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/appointment"
         tools:layout="@layout/fragment_appointment" />
 
     <fragment
-        android:id="@+id/nav_tools"
+        android:id="@+id/aptHist"
         android:name="vcn_vacina.vacinaja.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
+        android:label="@string/aptHistory"
         tools:layout="@layout/fragment_tools" />
-
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="vcn_vacina.vacinaja.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
-
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="vcn_vacina.vacinaja.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
 </navigation>

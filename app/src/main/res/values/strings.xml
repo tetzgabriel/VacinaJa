@@ -9,8 +9,8 @@
 
     <string name="menu_home">Home</string>
     <string name="vaccine_list">Lista de vacinas</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
+    <string name="appointment">Marcar consulta</string>
+    <string name="aptHistory">Historico de consulta</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 

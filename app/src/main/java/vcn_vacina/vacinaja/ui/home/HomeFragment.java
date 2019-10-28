@@ -48,10 +48,6 @@ public class HomeFragment extends Fragment {
         ((TextView) view.findViewById(R.id.UserBirth)).setText(mockedUser.usuarioMocado.getIdade() + " Anos");
         ((TextView) view.findViewById(R.id.UserBloodType)).setText("Tipo sanguineo" + mockedUser.usuarioMocado.getBloodType());
         calendar = view.findViewById(R.id.calendarView);
-        Button vacinas = view.findViewById(R.id.btn_Vac_disp);
-        vacinas.setOnClickListener(vw -> ((MainActivity) Objects.requireNonNull(getActivity())).makeVacList());
-        Button consultas = view.findViewById(R.id.btn_consut_hist);
-        consultas.setOnClickListener(vw -> ((MainActivity) Objects.requireNonNull(getActivity())).makeConsult());
         HomeFragment rh = this;
         calendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override

@@ -117,6 +117,12 @@ public class MainActivity extends AppCompatActivity
                 fragment = new VaccineList();
             replaceFragment(fragment, "vac");
         }
+        if (id == R.id.nav_home) {
+            fragment = fragmentManager.findFragmentByTag("vac");
+            if (fragment == null)
+                fragment = new VaccineList();
+            replaceFragment(fragment, "vac");
+        }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
