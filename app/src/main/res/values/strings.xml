@@ -13,11 +13,13 @@
     <string name="aptHistory">Historico de consulta</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="marcar_consulta">Marcar consulta</string>
+    <string name="r_0_00">R$ 0.00</string>
 
-        <string-array name="rest_requests">
-        <item>Americana</item>
-        <item>Santa Barbara</item>
-        <item>Campinas</item>
+    <string-array name="rest_requests">
+        <item>Consultorio 1</item>
+        <item>Consultorio 2</item>
+        <item>Consultorio 3</item>
         </string-array>
 
 
@@ -37,6 +39,21 @@
         <item>importancia mais alta</item>
         <item>importancia mais baixa</item>
         <item>para tomar</item>
+    </string-array>
+
+    <string-array name="horas">
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+    </string-array>
+    <string-array name="minutos">
+        <item>00</item>
+        <item>30</item>
     </string-array>
 
 

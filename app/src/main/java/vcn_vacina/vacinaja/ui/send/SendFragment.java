@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -16,20 +17,15 @@ import vcn_vacina.vacinaja.R;
 
 public class SendFragment extends Fragment {
 
-    private SendViewModel sendViewModel;
+    View root;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        sendViewModel =
-                ViewModelProviders.of(this).get(SendViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_send, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
-        sendViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
+        if (root == null)
+            root = inflater.inflate(R.layout.fragment_send, container, false);
+
         return root;
     }
 }

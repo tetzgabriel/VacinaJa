@@ -1,4 +1,4 @@
-package vcn_vacina.vacinaja.Vaccines;
+package vcn_vacina.vacinaja.Data.Vaccines;
 
 public class Vaccine {
     String name;

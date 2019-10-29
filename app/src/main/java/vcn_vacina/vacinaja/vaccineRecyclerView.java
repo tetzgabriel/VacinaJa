@@ -2,7 +2,6 @@ package vcn_vacina.vacinaja;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import vcn_vacina.vacinaja.Vaccines.Vaccine;
+import vcn_vacina.vacinaja.Data.Vaccines.Vaccine;
 import vcn_vacina.vacinaja.mocks.MockedVaccines;
 import vcn_vacina.vacinaja.ui.Appointment.AppointmentFragment;
 

@@ -40,14 +40,13 @@ public class HomeFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ViewModelProviders.of(this).get(HomeViewModel.class);
         if (view == null)
             view = inflater.inflate(R.layout.fragment_home, container, false);
 
         ((ImageView) view.findViewById(R.id.UserImage)).setImageResource(mockedUser.usuarioMocado.getImage());
         ((TextView) view.findViewById(R.id.UserName)).setText(mockedUser.usuarioMocado.getNome());
         ((TextView) view.findViewById(R.id.UserBirth)).setText(mockedUser.usuarioMocado.getIdade() + " Anos");
-        ((TextView) view.findViewById(R.id.UserBloodType)).setText("Tipo sanguineo" + mockedUser.usuarioMocado.getBloodType());
+        ((TextView) view.findViewById(R.id.UserBloodType)).setText("Tipo sanguineo: " + mockedUser.usuarioMocado.getBloodType());
         calendar = view.findViewById(R.id.calendarView);
         ((TextView) view.findViewById(R.id.month)).setText(Month.month.get(calendar.getFirstDayOfCurrentMonth().getMonth()));
         HomeFragment rh = this;

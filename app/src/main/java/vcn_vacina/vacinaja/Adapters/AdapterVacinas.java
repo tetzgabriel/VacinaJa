@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import vcn_vacina.vacinaja.R;
-import vcn_vacina.vacinaja.Vaccines.Vaccine;
+import vcn_vacina.vacinaja.Data.Vaccines.Vaccine;
 
 public class AdapterVacinas  extends RecyclerView.Adapter{
 

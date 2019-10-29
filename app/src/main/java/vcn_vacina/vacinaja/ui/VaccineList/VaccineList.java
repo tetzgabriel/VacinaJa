@@ -5,19 +5,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import vcn_vacina.vacinaja.R;
-import vcn_vacina.vacinaja.Vaccines.Vaccine;
+import vcn_vacina.vacinaja.Data.Vaccines.Vaccine;
 import vcn_vacina.vacinaja.mocks.MockedVaccines;
 import vcn_vacina.vacinaja.vaccineRecyclerView;
 

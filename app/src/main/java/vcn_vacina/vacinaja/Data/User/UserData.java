@@ -1,4 +1,4 @@
-package vcn_vacina.vacinaja.User;
+package vcn_vacina.vacinaja.Data.User;
 
 public class UserData {
     private String nome;

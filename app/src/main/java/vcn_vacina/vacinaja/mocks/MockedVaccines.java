@@ -9,8 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import vcn_vacina.vacinaja.Vaccines.Importancia;
-import vcn_vacina.vacinaja.Vaccines.Vaccine;
+import vcn_vacina.vacinaja.Data.Vaccines.Importancia;
+import vcn_vacina.vacinaja.Data.Vaccines.Vaccine;
 
 public class MockedVaccines {
     public static List<Vaccine> mockedVaccine = new ArrayList<>(Arrays.asList(

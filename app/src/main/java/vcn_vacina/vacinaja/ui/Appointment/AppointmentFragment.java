@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
@@ -21,10 +21,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import vcn_vacina.vacinaja.Data.Appointment.Appointment;
 import vcn_vacina.vacinaja.MainActivity;
 import vcn_vacina.vacinaja.R;
-import vcn_vacina.vacinaja.Vaccines.Vaccine;
+import vcn_vacina.vacinaja.Data.Vaccines.Vaccine;
 import vcn_vacina.vacinaja.mocks.MockedVaccines;
+import vcn_vacina.vacinaja.mocks.mockAptHist;
 import vcn_vacina.vacinaja.ui.home.HomeFragment;
 import vcn_vacina.vacinaja.vaccineRecyclerView;
 
@@ -69,16 +71,25 @@ public class AppointmentFragment extends Fragment {
                         .setAction("Action", null).show();
             } else {
                 MockedVaccines.mockedVaccineTaken.addAll(auxliarVaccineList);
-                fragment.createEvent(dataFInal, auxliarVaccineList.stream().map(Vaccine::getName).reduce((v1, v2) -> v1 + "\n" + v2).orElse(""));
+                fragment.createEvent(dataFInal, getVaccines());
                 auxliarVaccineList.clear();
                 value = 0;
                 ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.finalValue)).setText(String.valueOf(value));
+                String time = ((Spinner) root.findViewById(R.id.horas)).getSelectedItem().toString() + ":" + ((Spinner) root.findViewById(R.id.horas)).getSelectedItem().toString();
+                mockAptHist.mockedHistory.add(new Appointment(time,
+                        ((Spinner) root.findViewById(R.id.local)).getSelectedItem().toString(),
+                        getVaccines()));
                 ((MainActivity) Objects.requireNonNull(getActivity())).makeHome();
             }
 
         });
 
         return root;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private String getVaccines() {
+        return auxliarVaccineList.stream().map(Vaccine::getName).reduce((v1, v2) -> v1 + "\n" + v2).orElse("");
     }
 
     public void setValue(float plus, Vaccine vaccine) {
