@@ -48,6 +48,7 @@ public class HistoricRecyclerView
         holder.dia.setText(mValues.get(position).getData());
         holder.horario.setText(mValues.get(position).getHorarios());
         holder.vacinas.setText(mValues.get(position).getVaccines());
+        holder.status.setText(mValues.get(position).getStatus());
 
         holder.itemView.setTag(mValues.get(position));
     }
@@ -62,6 +63,7 @@ public class HistoricRecyclerView
         final TextView dia;
         final TextView horario;
         final TextView vacinas;
+        final TextView status;
 
         @RequiresApi(api = Build.VERSION_CODES.N)
         ViewHolder(View view) {
@@ -70,6 +72,7 @@ public class HistoricRecyclerView
             dia = view.findViewById(R.id.dia);
             horario = view.findViewById(R.id.horario);
             vacinas = view.findViewById(R.id.vacinas);
+            status = view.findViewById(R.id.status);
         }
     }
 }
