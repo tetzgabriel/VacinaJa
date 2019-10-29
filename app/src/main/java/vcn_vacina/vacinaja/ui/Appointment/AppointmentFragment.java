@@ -1,5 +1,6 @@
 package vcn_vacina.vacinaja.ui.Appointment;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -50,6 +52,7 @@ public class AppointmentFragment extends Fragment {
         this.fragment = fragment;
     }
 
+    @SuppressLint("SimpleDateFormat")
     @RequiresApi(api = Build.VERSION_CODES.N)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -72,13 +75,13 @@ public class AppointmentFragment extends Fragment {
             } else {
                 MockedVaccines.mockedVaccineTaken.addAll(auxliarVaccineList);
                 fragment.createEvent(dataFInal, getVaccines());
-                auxliarVaccineList.clear();
-                value = 0;
                 ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.finalValue)).setText(String.valueOf(value));
                 String time = ((Spinner) root.findViewById(R.id.horas)).getSelectedItem().toString() + ":" + ((Spinner) root.findViewById(R.id.horas)).getSelectedItem().toString();
-                mockAptHist.mockedHistory.add(new Appointment(time,
+                mockAptHist.mockedHistory.add(new Appointment(new SimpleDateFormat("dd/MM/yy").format(dataFInal), time,
                         ((Spinner) root.findViewById(R.id.local)).getSelectedItem().toString(),
                         getVaccines()));
+                auxliarVaccineList.clear();
+                value = 0;
                 ((MainActivity) Objects.requireNonNull(getActivity())).makeHome();
             }
 

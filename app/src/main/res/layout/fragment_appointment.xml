@@ -75,7 +75,6 @@
                 android:entries="@array/minutos"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textColor="#ffffff"
                 />
         </LinearLayout>
 

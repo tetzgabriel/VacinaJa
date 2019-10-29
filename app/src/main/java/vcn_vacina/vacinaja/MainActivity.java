@@ -22,6 +22,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import vcn_vacina.vacinaja.ui.Appointment.AppointmentFragment;
 import vcn_vacina.vacinaja.ui.VaccineList.VaccineList;
+import vcn_vacina.vacinaja.ui.historic.HistoricFragment;
 import vcn_vacina.vacinaja.ui.home.HomeFragment;
 import vcn_vacina.vacinaja.ui.tools.ToolsFragment;
 
@@ -89,6 +90,14 @@ public class MainActivity extends AppCompatActivity
         }
         replaceFragment(apt, "home");
     }
+    public void makeHistoric() {
+        HistoricFragment apt = (HistoricFragment) fragmentManager.findFragmentByTag("hist");
+
+        if (apt == null) {
+            apt = new HistoricFragment();
+        }
+        replaceFragment(apt, "hist");
+    }
 
     public void makeVacList() {
         VaccineList apt = (VaccineList) fragmentManager.findFragmentByTag("vac");
@@ -109,7 +118,13 @@ public class MainActivity extends AppCompatActivity
             makeVacList();
         }
         if (id == R.id.appointment) {
-            makeAppointment((HomeFragment) fragmentManager.findFragmentByTag("home"));
+//            HomeFragment auxiliarHM = (HomeFragment) fragmentManager.findFragmentByTag("home");
+//            if(auxiliarHM == null)
+//                auxiliarHM = new HomeFragment();
+//            makeAppointment(auxiliarHM);
+        }
+        if (id == R.id.aptHist) {
+            makeHistoric();
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
