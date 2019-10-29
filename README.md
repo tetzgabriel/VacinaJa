@@ -1,7 +1,7 @@
 <h1> Vacina ja </h1>
 
-<p>VacinaJa é um aplicativo com objetivo de auxiliar os usuarios em relação a sua saud no que se referem as vacinas. </p>
-<p>O projeto permite que o usuario controle as vacinas que recebeu ou não, podendo ainda verificar quais vacinas estão na hora de serem tomadas ou que são importantes em determinadas epocas </p>
+<p>VacinaJa é um aplicativo com objetivo de auxiliar os usuarios em relação a sua saúde no que se refere a vacinas. </p>
+<p>O projeto permite que o usuário controle as vacinas que recebeu ou não, podendo ainda verificar quais vacinas estão na hora de serem tomadas ou que são importantes em determinadas epocas </p>
 
 <p> O projeto é dividido em 5 telas </p>
     
